@@ -1,0 +1,57 @@
+//
+// Prefix header for all source files of the 'GDRMMobile' target in the 'GDRMMobile' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#include <libxml/HTMLparser.h>
+#import "AppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
+#import "NSString+MyStringProcess.h"
+#import "NSNumber+NumberConvert.h"
+#import "WebServiceHandler.h"
+#import "NSManagedObject+_NeedUpLoad_.h"
+
+#ifndef __OPTIMIZE__
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) {}
+#endif
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) {}
+#endif
+
+#define ARC_ENABLED
+
+#define BACKDISPATCH(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define MAINDISPATCH(block) dispatch_async(dispatch_get_main_queue(), block)
+
+#define INSPECTIONKEY @"CurrentInpection_id"
+#define INSPECTORARRAYKEY @"CurrentInspectorArray" /*巡查人名字数组*/
+#define USERKEY @"CurrentUser_id" /*UserInfo的myid*/
+
+
+
+#define VERSION_NAME @"南沙大桥"
+#define VERSION_TIME @"2020年05月09日"
+
+
+/*
+ *add by lxm
+ */
+#define MMTOPIX 2.83
+#define SCALEFACTOR 1.0017f
+
+#define HIGHWAY_PROPERTY_UNDETERMINED @"路产损失费需由专业机构评估待定"
+#define UNDETERMINED @"待定"

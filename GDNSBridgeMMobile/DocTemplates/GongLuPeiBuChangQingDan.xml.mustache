@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdf:template>
+    {{! 公路赔(补)偿清单 }}
+	<pdf:paper width="595.276" height="841.89" fontName="SimSun" fontSize="10" offset="0.5,-1"/>
+	<pdf:content>
+<!--        <pdf:line fromPoint="3,2.5" toPoint="38,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="5,1" toPoint="5,3" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="6,1" toPoint="6,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="7,1" toPoint="7,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="8,1" toPoint="8,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="9,1" toPoint="9,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="10,1" toPoint="10,3" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="11,1" toPoint="11,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="12,1" toPoint="12,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="13,1" toPoint="13,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="14,1" toPoint="14,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="15,1" toPoint="15,3" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="16,1" toPoint="16,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="17,1" toPoint="17,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="18,1" toPoint="18,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="19,1" toPoint="19,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="20,1" toPoint="20,3" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="21,1" toPoint="21,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="22,1" toPoint="22,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="23,1" toPoint="23,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="24,1" toPoint="24,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="25,1" toPoint="25,3" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="26,1" toPoint="26,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="27,1" toPoint="27,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="28,1" toPoint="28,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="29,1" toPoint="29,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="30,1" toPoint="30,3" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="31,1" toPoint="31,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="32,1" toPoint="32,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="33,1" toPoint="33,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="34,1" toPoint="34,2.5" lineWidth="0.5"/>-->
+<!--        <pdf:line fromPoint="35,1" toPoint="35,3" lineWidth="0.5"/>-->
+        <pdf:text point="top-left:51,21" fontSize="24">公 路 赔 （补） 偿 清 单</pdf:text>
+        <pdf:table rect="{15,39},{171,233.6}" borderWidth="1.0" lineWidth="0.5" padding="1">
+            <pdf:tr height="11.5">
+            	<pdf:td width="15.5">当事人</pdf:td>
+            	<pdf:td width="62.2" static="NO">{{ citizen.name }}</pdf:td>
+            	<pdf:td width="19">车 型</pdf:td>
+            	<pdf:td width="16.5" static="NO">{{ citizen.car_model }}</pdf:td>
+            	<pdf:td width="20.3">车 号</pdf:td>
+            	<pdf:td width="37.5" static="NO">{{ citizen.car_number }}</pdf:td>
+            </pdf:tr>
+            <pdf:tr height="11.5">
+            	<pdf:td width="15.5">单 位</pdf:td>
+            	<pdf:td width="97.7" static="NO">{{ citizen.org }}</pdf:td>
+            	<pdf:td width="20.3">联系电话</pdf:td>
+            	<pdf:td width="37.5" static="NO">{{ citizen.tel }}</pdf:td>
+            </pdf:tr>
+            <pdf:tr height="11.5">
+            	<pdf:td width="15.5">案 发\n地 点</pdf:td>
+            	<pdf:td width="97.7" static="NO">{{ case.place }}</pdf:td>
+            	<pdf:td width="20.3">时 间</pdf:td>
+            	<pdf:td width="37.5" textAlignment="left" static="NO">{{ case.date }}</pdf:td>
+            </pdf:tr>
+            <pdf:tr height="11.5">
+            	<pdf:td width="15.5" textAlignment="center">序 号</pdf:td>
+            	<pdf:td width="62.2" textAlignment="center">项目名称</pdf:td>
+            	<pdf:td width="19" textAlignment="center">规 格</pdf:td>
+            	<pdf:td width="16.5" textAlignment="center">单 位</pdf:td>
+            	<pdf:td width="20.3" textAlignment="center">数 量</pdf:td>
+            	<pdf:td width="19.3" textAlignment="center">单价(元)</pdf:td>
+            	<pdf:td width="18.2" textAlignment="center">金额(元)</pdf:td>
+            </pdf:tr>
+            {{! 赔补偿项目列表 }}
+            {{#items}}
+            <pdf:tr height="11.6">
+            	<pdf:td width="15.5" >{{ .id }}</pdf:td>
+                <pdf:td width="62.2" textAlignment="left" static="NO"><pdf:text point="mid-left:5,5.55">{{ .name }}</pdf:text></pdf:td>
+            	<pdf:td width="19" static="NO">{{ .size }}</pdf:td>
+            	<pdf:td width="16.5" static="NO">{{ .unit }}</pdf:td>
+            	<pdf:td width="20.3" static="NO">{{ .quantity }}</pdf:td>
+            	<pdf:td width="19.3" static="NO">{{ .unit_price }}</pdf:td>
+            	<pdf:td width="18.2" static="NO">{{ .total_price }}</pdf:td>
+            </pdf:tr>
+            {{/items}}
+<!--            <pdf:tr height="11.5"><pdf:td width="169.5"></pdf:td></pdf:tr>-->
+            <pdf:tr height="11.5">
+            	<pdf:td width="15.5" textAlignment="center">合 计</pdf:td>
+            	<pdf:td width="155.5" textAlignment="center">
+            		<pdf:text point="mid-left:1,5.55">人民币（大写）：</pdf:text>
+            		<pdf:text point="mid-left:34,5.55" static="NO">{{ money.wan }}</pdf:text>
+            		<pdf:text point="mid-left:43,5.55">万</pdf:text>
+            		<pdf:text point="mid-left:49,5.55" static="NO">{{ money.qian }}</pdf:text>
+            		<pdf:text point="mid-left:58,5.55">仟</pdf:text>
+            		<pdf:text point="mid-left:64,5.55" static="NO">{{ money.bai }}</pdf:text>
+            		<pdf:text point="mid-left:73,5.55">佰</pdf:text>
+            		<pdf:text point="mid-left:79,5.55" static="NO">{{ money.shi }}</pdf:text>
+            		<pdf:text point="mid-left:88,5.55">拾</pdf:text>
+            		<pdf:text point="mid-left:94,5.55" static="NO">{{ money.yuan }}</pdf:text>
+            		<pdf:text point="mid-left:103,5.55">元</pdf:text>
+            		<pdf:text point="mid-left:109,5.55" static="NO">{{ money.jiao }}</pdf:text>
+            		<pdf:text point="mid-left:118,5.55">角</pdf:text>
+            		<pdf:text point="mid-left:124,5.55" static="NO">{{ money.fen }}</pdf:text>
+            		<pdf:text point="mid-left:133,5.55">分</pdf:text>
+                    <pdf:text point="mid-left:137,5.55" static="NO">{{ money.xiaoxie }}</pdf:text>
+            	</pdf:td>
+            </pdf:tr>
+            <pdf:tr height="11.5">
+            	<pdf:td width="15.5" textAlignment="center">备 注</pdf:td>
+            	<pdf:td width="155.5" textAlignment="left" static="NO"><pdf:text point="mid-left:5,5.55">{{ comment }}</pdf:text></pdf:td>
+            </pdf:tr>
+            <pdf:tr height="37">
+<!--                <pdf:td width="171" textAlignment="left">告知事项：\n1、路政案件处理地址：番禺区榄核镇番禺七号公路南二环高速公路榄核收费站出口右侧\n2、办公时间：周一至周五上午8:00-12:00；下午14:30-17:30；\n3、办公电话（传真）：020-34839206\n4、在交警结案前，应先办理路产赔（补）偿手续。</pdf:td>-->
+            </pdf:tr>╭╭
+        </pdf:table>
+        <pdf:paragraph rect="{190,67},{5,188}" textAlignment="left">第一联 :路政存档︵白︶  第二联 :财务凭证︵红︶  第三联 :当事人凭证︵黄︶  第四联 :交警︵蓝︶  </pdf:paragraph>
+        <pdf:text point="top-left:17,238">告知事项：</pdf:text>
+        <pdf:text point="top-left:17,245">1、路政案件处理地址：南沙区榄核镇浅海大桥南二环高速公路榄核收费站出口右侧</pdf:text>
+        <pdf:text point="top-left:17,252">2、办公时间：周一至周五上午8:00-12:00；下午14:30-17:30；</pdf:text>
+        <pdf:text point="top-left:17,259">3、办公电话（传真）：020-34839206</pdf:text>
+        <pdf:text point="top-left:17,266">4、在交警结案前，应先办理路产赔（补）偿手续。</pdf:text>
+        <pdf:text point="top-left:21,274.5">当事人（签名）：</pdf:text>
+        <pdf:text point="top-left:110,274.5">经办人（签名）：</pdf:text>
+	</pdf:content> 
+</pdf:template>

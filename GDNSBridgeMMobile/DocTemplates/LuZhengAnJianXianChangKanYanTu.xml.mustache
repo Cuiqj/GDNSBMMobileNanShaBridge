@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdf:template>
+	{{! 路政案件现场勘验图 }}
+	<pdf:paper width="841.89" height="595.276" fontName="SimSun" fontSize="10.5" offset="-2.8,4.2"/>
+	<pdf:content>
+		<pdf:text point="108,15" fontSize="20.5">路 政 案 件 现 场 勘 验 图</pdf:text>
+		<pdf:text point="216,25">案号：</pdf:text>
+		<pdf:text point="230,22" static="NO">{{ caseNo }}</pdf:text>
+		<pdf:table rect="{14,27.5},{268,152}" borderWidth="0.5" lineWidth="0.5" padding="1">
+			<pdf:tr height="12">
+				<pdf:td width="13">时间</pdf:td>
+				<pdf:td width="72">
+					<pdf:text point="mid-left:3,6" static="NO">{{ date.year }}</pdf:text>
+					<pdf:text point="mid-left:15,6">年</pdf:text>
+					<pdf:text point="mid-left:23,6" static="NO">{{ date.month }}</pdf:text>
+					<pdf:text point="mid-left:28,6">月</pdf:text>
+					<pdf:text point="mid-left:34,6" static="NO">{{ date.day }}</pdf:text>
+					<pdf:text point="mid-left:41,6">日</pdf:text>
+					<pdf:text point="mid-left:48,6" static="NO">{{ date.hour }}</pdf:text>
+					<pdf:text point="mid-left:53,6">时</pdf:text>
+					<pdf:text point="mid-left:60,6" static="NO">{{ date.minute }}</pdf:text>
+					<pdf:text point="mid-left:66,6">分</pdf:text>
+                </pdf:td>
+				<pdf:td width="13">地点</pdf:td>
+				<pdf:td width="85" static="NO" textAlignment="left">{{ place }}</pdf:td>
+				<pdf:td width="21">事由</pdf:td>
+				<pdf:td width="64" static="NO" fontSize="9" textAlignment="left">{{ eventReason }}</pdf:td>
+			</pdf:tr>
+			<pdf:tr height="119.5">
+				<pdf:td width="268">
+					<pdf:image rect="{0,0},{268,115}" url="{{ imagePath }}" static="NO"/>
+					<pdf:grid rect="{0,0},{268,115}" row="26" column="62" alpha="0.3" />
+				</pdf:td>
+			</pdf:tr>
+			<pdf:tr height="22">
+				<pdf:td width="268">
+					<pdf:text point="2,-1">说明：</pdf:text>
+					<pdf:paragraph rect="{2,5.6},{264,22}" lineHeight="4" indent="head:13" static="NO">{{ comment }}</pdf:paragraph>
+				</pdf:td>
+			</pdf:tr>
+		</pdf:table>
+		<pdf:text point="15.5,187">绘图员：</pdf:text>
+		<!-- <pdf:text point="53,187" static="NO">{{ draftsman }}</pdf:text> -->
+		<pdf:text point="85,187">勘查员：</pdf:text>
+		<!-- <pdf:text point="112,187" static="NO">{{ inquestman  }}</pdf:text> -->
+		<pdf:text point="158,187">申请人或代理人签名：</pdf:text>
+	</pdf:content>
+</pdf:template>
