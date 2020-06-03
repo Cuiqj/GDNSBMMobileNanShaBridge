@@ -436,6 +436,11 @@
         caseEvidence = NSStringNilIsBad(notice.witness);
         if(ttt.count>1)
          caseDescription = [ttt objectAtIndex:1];
+        if(ttt.count>2){
+            for (int i = 2; i<ttt.count; i++) {
+                caseDescription = [NSString stringWithFormat:@"%@分%@",caseDescription,[ttt objectAtIndex:i]];
+            }
+        }
         payReason = NSStringNilIsBad(notice.pay_reason);
         NSArray *paymentPlaces = [Systype typeValueForCodeName:@"交款地点"];
         if (paymentPlaces.count > 0) {
